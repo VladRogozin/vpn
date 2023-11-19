@@ -35,9 +35,6 @@ I connected nginx to the project
 1. Make sure you have Docker installed and running on your computer.
 
 2. Navigate to the directory containing the docker-compose.yml file.
-3. Also, don't forget to perform migrations
-   ```shell
-   docker compose exec web python manage.py migrate
 
 3. If you have the plugin version of DComps, use the command:
    ```shell
@@ -48,3 +45,7 @@ I connected nginx to the project
 
     ```shell
    docker-compose up-build.
+
+5. Also, don't forget to perform migrations
+   ```shell
+   docker compose exec web python manage.py migrate
