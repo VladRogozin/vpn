@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <h2>Your Sites</h2>
+    <div class="row">
+        {% for site in sites %}
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ site.name }}</h5>
+                        <p class="card-text">{{ site.url }}</p>
+                        <a href="{% url 'proxy:proxy_view' site_name=site.name routes_on_original_site=site.url %}" class="btn btn-primary">Go to Site</a>
+                        <a href="{% url 'proxy:site_detail' site.id %}" class="btn btn-info">Details</a>
+                        <a href="{% url 'proxy:edit_site' site.id %}" class="btn btn-warning">Update</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

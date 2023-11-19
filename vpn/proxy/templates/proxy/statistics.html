@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Sites and Statistics</h2>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Site Name</th>
+          <th>Site URL</th>
+          <th>Page Transitions</th>
+          <th>Data Volume Sent (byte)</th>
+          <th>Data Volume Received (byte)</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in sites_with_stats %}
+          <tr>
+            <td>{{ item.site.name }}</td>
+            <td>{{ item.site.url }}</td>
+            {% if item.stat %}
+              <td>{{ item.stat.page_transitions }}</td>
+              <td>{{ item.stat.data_volume_sent }}</td>
+              <td>{{ item.stat.data_volume_received }}</td>
+            {% else %}
+              <td>N/A</td>
+              <td>N/A</td>
+              <td>N/A</td>
+            {% endif %}
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}
